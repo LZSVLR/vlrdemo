@@ -1,0 +1,18 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: shop
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/DemoSpring
+    username: root
+    password: 123
+  jpa:
+
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    database: postgresql
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+
