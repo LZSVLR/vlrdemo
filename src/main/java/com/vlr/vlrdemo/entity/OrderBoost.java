@@ -1,8 +1,5 @@
 package com.vlr.vlrdemo.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,9 +8,6 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "order_boost")
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
 @Data
 @Builder
 @NoArgsConstructor
@@ -24,7 +18,7 @@ public class OrderBoost {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "OrderStatus")
+    @Column(name = "order_status")
     private OrderStatus orderStatus;
 
     @Enumerated(EnumType.STRING)
@@ -37,13 +31,14 @@ public class OrderBoost {
     @Column(name = "description")
     private String description;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="performer_id")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="account_performer_id")
+//    @JsonManagedReference
     private Account performer;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "assignee_id")
-
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "account_assignee_id")
+//    @JsonManagedReference
     private Account assignee;
 
 

@@ -1,9 +1,6 @@
 package com.vlr.vlrdemo.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -12,9 +9,6 @@ import java.util.Set;
 
 @Entity
 @Table(name = "account")
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
 @Data
 @Builder
 @NoArgsConstructor
@@ -36,10 +30,12 @@ public class Account {
     private Double balance;
 
 
-    @OneToMany(mappedBy = "performer", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "performer", fetch = FetchType.EAGER)
+//    @JsonBackReference
     private List<OrderBoost> performOrderBoosts;
 
-    @OneToMany(mappedBy = "assignee", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "assignee", fetch = FetchType.EAGER)
+//    @JsonBackReference
     private List<OrderBoost> assigneeOrderBoosts;
 
     @ManyToMany(cascade = {
@@ -51,6 +47,7 @@ public class Account {
             inverseJoinColumns = @JoinColumn(name = "item_id"))
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
+//    @JsonBackReference
     private Set<Item> items;
 
 

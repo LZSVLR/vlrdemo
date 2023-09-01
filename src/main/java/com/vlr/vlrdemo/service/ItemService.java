@@ -1,6 +1,5 @@
 package com.vlr.vlrdemo.service;
 
-import com.vlr.vlrdemo.dto.AccountDto;
 import com.vlr.vlrdemo.dto.ItemDto;
 import com.vlr.vlrdemo.entity.Item;
 import com.vlr.vlrdemo.exception.DataNotFoundException;

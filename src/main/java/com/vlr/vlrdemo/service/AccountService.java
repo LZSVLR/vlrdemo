@@ -1,14 +1,13 @@
 package com.vlr.vlrdemo.service;
 
-import com.vlr.vlrdemo.dto.ItemDto;
-import com.vlr.vlrdemo.entity.Account;
+
 import com.vlr.vlrdemo.exception.DataNotFoundException;
 import com.vlr.vlrdemo.mapper.AccountMapper;
 import com.vlr.vlrdemo.repository.AccountRepository;
 import com.vlr.vlrdemo.dto.AccountDto;
 
 
-import lombok.NoArgsConstructor;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -51,8 +50,6 @@ public class AccountService {
         return accountMapper.map(update);
     }
 
-    //Почему просит транзакцию?
-    //Выкидывает ошибку когда я хочу вывести удаленную сущность
     @Transactional
     public void deleteAccount(Long id)
     {

@@ -1,8 +1,14 @@
 package com.vlr.vlrdemo.mapper;
 
+import com.vlr.vlrdemo.dto.AccountDto;
 import com.vlr.vlrdemo.dto.ItemDto;
+import com.vlr.vlrdemo.entity.Account;
 import com.vlr.vlrdemo.entity.Item;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+
+import java.util.stream.Collectors;
+
 
 @Component
 public class ItemMapper {
@@ -13,9 +19,8 @@ public class ItemMapper {
                 .name(item.getName())
                 .price(item.getPrice())
                 .description(item.getDescription())
-                .accounts(item.getAccounts())
+                .accountsId(item.getAccounts().stream().map(Account::getId).collect(Collectors.toSet()))
                 .build();
-
     }
     //Преобразует переданную стороннюю ДТОшку в item
     public Item map(ItemDto requestCreateItemDto) {
@@ -23,7 +28,7 @@ public class ItemMapper {
                 .name(requestCreateItemDto.getName())
                 .price(requestCreateItemDto.getPrice())
                 .description(requestCreateItemDto.getDescription())
-                .accounts(requestCreateItemDto.getAccounts())
+//                .accounts(requestCreateItemDto.getAccounts())
                 .build();
     }
 

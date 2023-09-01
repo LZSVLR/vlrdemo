@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/item")
+@RequestMapping("api/v1/items")
 @RequiredArgsConstructor
 @Slf4j
 public class ItemController {
     private final ItemService itemService;
 
-    @GetMapping
+    @GetMapping()
     public ResponseEntity<List<ItemDto>> showItems()
     {
         return ResponseEntity.ok(itemService.findAllItems());

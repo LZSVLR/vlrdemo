@@ -1,11 +1,8 @@
 package com.vlr.vlrdemo.dto;
 
 
-import com.vlr.vlrdemo.entity.Item;
-import com.vlr.vlrdemo.entity.OrderBoost;
-import lombok.*;
-import org.springframework.stereotype.Component;
 
+import lombok.*;
 
 import java.util.List;
 import java.util.Set;
@@ -14,13 +11,14 @@ import java.util.Set;
 @Data
 @Builder
 @AllArgsConstructor
+@RequiredArgsConstructor
 public class AccountDto {
     private Long id;
     private String name;
     private String phoneNumber;
     private Double balance;
-    private List<OrderBoost> performOrderBoosts;
-    private List<OrderBoost> assigneeOrderBoosts;
-    private Set<Item> items;
+    private List<Long> performOrderBoosts;
+    private List<Long> assigneeOrderBoosts;
+    private Set<ItemDto> items; // должно быть dto?
 
 }

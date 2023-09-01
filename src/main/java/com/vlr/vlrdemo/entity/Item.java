@@ -1,5 +1,6 @@
 package com.vlr.vlrdemo.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -31,5 +32,6 @@ public class Item {
     private String description;
 
     @ManyToMany(mappedBy = "items")
+//    @JsonManagedReference
     private Set<Account> accounts;
 }

@@ -2,7 +2,6 @@ package com.vlr.vlrdemo.controller;
 
 import com.vlr.vlrdemo.dto.AccountDto;
 import com.vlr.vlrdemo.exception.CreateValidationException;
-import com.vlr.vlrdemo.exception.DataNotFoundException;
 import com.vlr.vlrdemo.service.AccountService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -35,7 +34,7 @@ public class AccountController {
   @PostMapping("/create")
   public ResponseEntity<AccountDto> create(@RequestBody
                                                   AccountDto createAccountDto)  {
-    if(createAccountDto.getName() == null)
+    if(createAccountDto.getName() == null & createAccountDto.getPhoneNumber() == null )
     {
       throw new CreateValidationException("Name can't be null");
     }
