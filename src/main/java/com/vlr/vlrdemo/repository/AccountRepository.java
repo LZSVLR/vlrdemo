@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AccountRepository extends JpaRepository<Account, Long> {
     Account findAccountById(Long id);
+    Account searchAccountById(Long id);
     @Modifying
     @Query("UPDATE Account a set a.name = :name WHERE a.id = :id")
     Account updateAccountById(@Param("name") String name, @Param("id") Long id);

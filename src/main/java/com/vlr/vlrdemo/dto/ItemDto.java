@@ -14,10 +14,10 @@ import java.util.Set;
 @AllArgsConstructor
 @RequiredArgsConstructor
 public class ItemDto {
-    private Long id;
+    private long id;
     private String name;
-    private Double price;
+    private double price;
+    private int value;
     private String description;
-    private Set<Long> accountsId;
 
 }

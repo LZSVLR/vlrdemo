@@ -3,7 +3,6 @@ package com.vlr.vlrdemo.mapper;
 
 import com.vlr.vlrdemo.dto.AccountDto;
 import com.vlr.vlrdemo.entity.Account;
-import com.vlr.vlrdemo.entity.OrderBoost;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -22,10 +21,7 @@ public class AccountMapper {
             .id(account.getId())
             .name(account.getName())
             .phoneNumber(account.getPhoneNumber())
-            .items(account.getItems().stream().map(itemMapper::map).collect(Collectors.toSet()))
-            .balance(account.getBalance())
-            .performOrderBoosts(account.getPerformOrderBoosts().stream().map(OrderBoost::getId).collect(Collectors.toList()))
-            .assigneeOrderBoosts(account.getAssigneeOrderBoosts().stream().map(OrderBoost::getId).collect(Collectors.toList()))
+            .creditCard(account.getCreditCard())
             .build();
   }
 
@@ -34,8 +30,6 @@ public class AccountMapper {
     return Account.builder()
             .name(accountDto.getName())
             .phoneNumber(accountDto.getPhoneNumber())
-//            .items(accountDto.getItems())
-//            .performOrderBoosts(accountDto.getPerformOrderBoosts())
             .build();
   }
 

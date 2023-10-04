@@ -15,4 +15,5 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: none
-
+app:
+  paymentUrl: 'http://localhost:8080/api/val/payment/createPayment'

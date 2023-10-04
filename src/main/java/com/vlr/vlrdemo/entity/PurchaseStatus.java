@@ -1,5 +1,5 @@
 package com.vlr.vlrdemo.entity;
 
-public enum OrderStatus {
+public enum PurchaseStatus {
     PROCESSING, COMPLETED, FAILED, CANCEL
 }

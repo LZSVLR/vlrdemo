@@ -1,6 +1,7 @@
 package com.vlr.vlrdemo.service;
 
 
+import com.vlr.vlrdemo.entity.Account;
 import com.vlr.vlrdemo.exception.DataNotFoundException;
 import com.vlr.vlrdemo.mapper.AccountMapper;
 import com.vlr.vlrdemo.repository.AccountRepository;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -28,13 +30,29 @@ public class AccountService {
 
     public AccountDto findAccountById(Long id)
     {
-        if(accountRepository.findById(id).isEmpty())
+        var userAccount = new Account();
+        Optional<Account> findAccount = Optional.ofNullable(accountRepository.searchAccountById(id));
+        if(findAccount.isPresent())
         {
-            throw new DataNotFoundException("Account not found!");
-        }
+            userAccount = findAccount.get();
 
-        var find = accountRepository.findAccountById(id);
-        return accountMapper.map(find);
+
+        }else throw new DataNotFoundException("Указаный аккаунт не существует");
+
+        return accountMapper.map(userAccount);
+
+    }
+    public Account getAccountId(Long id)
+    {
+        var userAccount = new Account();
+        Optional<Account> findAccount = Optional.ofNullable(accountRepository.searchAccountById(id));
+        if (findAccount.isPresent()) {
+            userAccount = findAccount.get();
+
+
+        } else throw new DataNotFoundException("Указаный аккаунт не существует");
+
+        return userAccount;
     }
     public AccountDto createAccount(AccountDto accountDto) {
         var created = accountRepository.save(accountMapper.map(accountDto));

@@ -12,7 +12,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("api/v1/val")
+@RequestMapping("api/demo")
 @RequiredArgsConstructor
 @Slf4j
 public class AccountController {
@@ -34,7 +34,7 @@ public class AccountController {
   @PostMapping("/create")
   public ResponseEntity<AccountDto> create(@RequestBody
                                                   AccountDto createAccountDto)  {
-    if(createAccountDto.getName() == null & createAccountDto.getPhoneNumber() == null )
+    if(createAccountDto.getName() == null || createAccountDto.getPhoneNumber() == null )
     {
       throw new CreateValidationException("Name can't be null");
     }

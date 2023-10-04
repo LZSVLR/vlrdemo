@@ -1,14 +1,12 @@
 package com.vlr.vlrdemo.entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
-import java.util.Set;
+import java.util.List;
 
 
 @Entity
@@ -28,10 +26,12 @@ public class Item {
     @Column(name = "price")
     private Double price;
 
+    @Column(name = "value")
+    private Integer value;
+
     @Column(name = "description")
     private String description;
 
     @ManyToMany(mappedBy = "items")
-//    @JsonManagedReference
-    private Set<Account> accounts;
+    private List<PurchaseOrder> purchaseOrders;
 }

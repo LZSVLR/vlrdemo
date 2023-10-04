@@ -18,8 +18,8 @@ public class ItemMapper {
                 .id(item.getId())
                 .name(item.getName())
                 .price(item.getPrice())
+                .value(item.getValue())
                 .description(item.getDescription())
-                .accountsId(item.getAccounts().stream().map(Account::getId).collect(Collectors.toSet()))
                 .build();
     }
     //Преобразует переданную стороннюю ДТОшку в item
@@ -27,8 +27,8 @@ public class ItemMapper {
         return Item.builder()
                 .name(requestCreateItemDto.getName())
                 .price(requestCreateItemDto.getPrice())
+                .value(requestCreateItemDto.getValue())
                 .description(requestCreateItemDto.getDescription())
-//                .accounts(requestCreateItemDto.getAccounts())
                 .build();
     }
 
